@@ -1,0 +1,17 @@
+RewriteEngine on
+
+# Rewrite all the default paths to public e.g. /css/style.css -> /public/css/style.css
+
+# https://electrictoolbox.com/silverstripe-htaccess-condition-missing-css-etc/
+RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|js|png|swf|txt)$
+# Redirect everything to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [NC,L,QSA]
+# ^ 	Geeft het begin van een string aan.
+# $ 	Geeft het einde van een string aan.
+# (.*) 	Een placeholder voor elke string binnen een URL. 
+#       De haakjes slaan de string op in een variabele.
+# https://www.strato.nl/hosting/url-rewriting/
+# NC no case
+# L last
+# QSA query string append
